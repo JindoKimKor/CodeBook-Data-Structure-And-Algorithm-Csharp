@@ -18,5 +18,5 @@ Update Summary
 - 2024-01-22: Solution code for the easy-level LeetCode problem "Two Sum" has been added, along with testable code for the solution. The applied data structure is Hash Table, and the used algorithm is the Hash-based Search.
 Related files:
 EasyLevel/Two_Sum/Program.cs
-[leetcode link](https://leetcode.com/problems/two-sum/description/)
+[leetcode Two Sum problem link](https://leetcode.com/problems/two-sum/description/)
 
