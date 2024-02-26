@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Policy;
@@ -9,28 +10,57 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //int[] randomNumberArray = new int[10000];
-        //Random random = new Random();
-        //for (int i = 0; i < randomNumberArray.Length; i++)
-        //{
-        //    randomNumberArray[i] = random.Next(-1000000, 10000001);
-        //}
-        int[] nums = { 3, 2, 4 };
-        int target = 6;//an example of target
-        var result = TwoSumHashTable(nums, target);
-
-        
-
-        if (result != null)
+        int[] NumberArray = new int[100000];
+        //Generating NumberArray
+        for (int i = 0; i < NumberArray.Length; i++)
         {
-            Console.WriteLine($"Indices found: [{result[0]}, {result[1]}]");
-            Console.WriteLine($"Numbers: {nums[result[0]]} + {nums[result[1]]} = {target}");
+            NumberArray[i] = i + 1;
+        }
+
+        //int[] nums = { 3, 2, 4 };
+        int target = 199999;//an example of target
+        //var result = TwoSumHashTable(nums, target);
+
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        int[] bruteForceResult = BruteForceTwoSum(NumberArray, target);
+        stopwatch.Stop();
+        long bruteForceTime = stopwatch.ElapsedMilliseconds;
+
+        stopwatch.Restart();
+        var hashTableResult = TwoSumHashTable(NumberArray, target);
+        stopwatch.Stop();
+        long hashTableTime = stopwatch.ElapsedMilliseconds;
+
+        if (bruteForceResult != null)
+        {
+            Console.WriteLine($"Indices found: [{bruteForceResult[0]}, {bruteForceResult[1]}]");
+            Console.WriteLine($"Numbers: {NumberArray[bruteForceResult[0]]} + {NumberArray[bruteForceResult[1]]} = {target}");
+            Console.WriteLine($"Brute Force Method Time: {bruteForceTime} ms");
+            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine($"Indices found: [{hashTableResult[0]}, {hashTableResult[1]}]");
+            Console.WriteLine($"Numbers: {NumberArray[hashTableResult[0]]} + {NumberArray[hashTableResult[1]]} = {target}");
+            Console.WriteLine($"Hash Table Method Time: {hashTableTime} ms");
         }
         else
         {
             Console.WriteLine("No two numbers add up to the target.");
         }
         Console.ReadKey();
+    }
+
+    static int[] BruteForceTwoSum(int[] nums, int target)
+    {
+        for (int i = 0; i < nums.Length; i++)
+        {
+            for (int j = i + 1; j < nums.Length; j++)
+            {
+                if (nums[i] + nums[j] == target)
+                {
+                    return new int[] { i, j };
+                }
+            }
+        }
+        return null;
     }
 
     static int[] TwoSumHashTable(int[] randomArrayNumbers, int target)
