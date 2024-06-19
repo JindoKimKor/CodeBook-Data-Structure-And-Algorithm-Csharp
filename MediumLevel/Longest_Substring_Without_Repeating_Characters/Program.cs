@@ -10,6 +10,7 @@ namespace Longest_Substring_Without_Repeating_Characters
     {
         static void Main(string[] args)
         {
+            
         }
 
     }

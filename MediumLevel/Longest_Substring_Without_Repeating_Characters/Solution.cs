@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Longest_Substring_Without_Repeating_Characters
 {
-    public class Solution
+    static public class Solution
     {
-        public int LengthOfLongestSubstring(string s)
+        static public int LengthOfLongestSubstring(string s)
         {
             return 0;
         }
