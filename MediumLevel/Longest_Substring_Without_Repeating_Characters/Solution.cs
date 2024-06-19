@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Longest_Substring_Without_Repeating_Characters
 {
-    internal class Program
+    public class Solution
     {
-        static void Main(string[] args)
+        public int LengthOfLongestSubstring(string s)
         {
+            return 0;
         }
-
     }
 }
