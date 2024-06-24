@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Longest_Substring_Without_Repeating_Characters
+﻿namespace Longest_Substring_Without_Repeating_Characters
 {
     static public class Solution
     {
