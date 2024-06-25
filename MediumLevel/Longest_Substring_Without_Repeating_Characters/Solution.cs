@@ -12,36 +12,28 @@ namespace Longest_Substring_Without_Repeating_Characters
 
             Dictionary<char, int> charIndexMap = new Dictionary<char, int>();
             int biggestSubStringLength = 1;
-            char targetChar;
             int conflictedIndex;
+            int maxNonConflictingSubstringLength = 0;
 
             for (int i = 0; i < s.Length; i++)
             {
-                targetChar = s[i];//u
-                if (i == 0)
+                if (charIndexMap.Count == 0 || !charIndexMap.ContainsKey(s[i]))
                 {
-                    charIndexMap[s[i]] = i;//charIndexMap[a] = 0                 
+                    charIndexMap[s[i]] = i;
+                    maxNonConflictingSubstringLength++;
                 }
                 else
                 {
-                    if (!charIndexMap.ContainsKey(targetChar))
+                    conflictedIndex = charIndexMap[s[i]];
+                    charIndexMap[s[i]] = i;
+                    biggestSubStringLength = biggestSubStringLength < i - conflictedIndex ? charIndexMap[s[i]] - conflictedIndex : biggestSubStringLength;
+                    if (i != s.Length - 1)
                     {
-                        charIndexMap[s[i]] = i;
-                        biggestSubStringLength++;
-                        if (biggestSubStringLength != (i + 1))
-                        {
-                            biggestSubStringLength--;
-                        }
-                    }
-                    else
-                    {
-                        conflictedIndex = charIndexMap[s[i]];//aab
-                        charIndexMap[s[i]] = i;
-                        int temNumber = charIndexMap[s[i]] - conflictedIndex;
-                        biggestSubStringLength = temNumber > biggestSubStringLength ? temNumber : biggestSubStringLength;
+                        maxNonConflictingSubstringLength = 1;
                     }
                 }
             }
+            biggestSubStringLength = maxNonConflictingSubstringLength > biggestSubStringLength ? maxNonConflictingSubstringLength : biggestSubStringLength;
             return biggestSubStringLength;
         }
     }
