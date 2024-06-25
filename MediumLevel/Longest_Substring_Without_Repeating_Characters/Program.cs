@@ -22,6 +22,15 @@ namespace Longest_Substring_Without_Repeating_Characters
                     charArray[i] = templateChars[random.Next(templateChars.Length)];
                 }
             }
+            longestStringWithFiftyThousandLength = new string(charArray);
+            int emptyReturn = Solution.LengthOfLongestSubstring(emptyString);
+            int longestLengthReturn = Solution.LengthOfLongestSubstring(longestStringWithFiftyThousandLength);
+
+            if (emptyReturn == 0 && longestLengthReturn == 49999)
+            {
+                Console.WriteLine("Congrat!");
+                Console.ReadKey();
+            }
         }
     }
 }
