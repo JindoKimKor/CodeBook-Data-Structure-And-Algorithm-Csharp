@@ -64,17 +64,5 @@ namespace Longest_Substring_Without_Repeating_Characters
 
             return maxLength;
         }
-        static public int LengthOfLongestSubstringBruthForce(string s)
-        {
-            // Return immediately if no processing is needed for strings
-            if (s.Length == 0) return 0;
-            if (s.Length == 1) return 1;
-
-            Dictionary<char, int> charIndexMap = new Dictionary<char, int>();
-            int totalMaxLength = 1;  // Overall maximum substring length
-
-            return totalMaxLength;
-        }
-
     }
 }
